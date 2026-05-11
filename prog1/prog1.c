@@ -50,17 +50,23 @@ void write_to_binary(Student *s,int n){
 void get_record(Student *s,int n,int m){
     Student temp;
     FILE *ptr=fopen("students.bin","rb");
-    fseek(ptr,(sizeof(Student))*m-1,SEEK_SET);
+    fseek(ptr,(sizeof(Student))*(m-1),SEEK_SET);
     fread(&temp,sizeof(Student),1,ptr);
     fclose(ptr);
     printf("mth record:\nName: %s\tId: %d\tMarks: %d\n",temp.n,temp.id,temp.m);
 }
 void delete(Student *s,int n,int d){
-    FILE *ptr=fopen("students.txt","wb");
+    Student s1[n];
+    FILE *ptr=fopen("students.bin","wb");
     fwrite(s,sizeof(Student),d-1,ptr);
-    fseek(ptr,(sizeof(Student))*d-1,SEEK_SET);
-    fwrite(s,sizeof(Student),n-d,ptr);
+    fwrite(s+d,sizeof(Student),n-d,ptr);
     fclose(ptr);
+    FILE *ptr2=fopen("students.bin","rb");
+    fread(s1,sizeof(Student),n-1,ptr2);
+    printf("Records after deleting:\n");
+    for(int i=0;i<n-1;i++){
+        printf("%d record:\nName: %s\tId: %d\tMarks: %d\n",i,s1[i].n,s1[i].id,s1[i].m);
+    }
 }
 
 
