@@ -16,14 +16,16 @@ union decision {
 
 union decision input() {
     union decision d;
+    int t;
     d.flags = 0;
-    printf("Your choice (0/1): "); scanf("%d", &d.f.yc);
-    printf("Mom's choice (0/1): "); scanf("%d", &d.f.mc);
-    printf("Dad's choice (0/1): "); scanf("%d", &d.f.fc);
-    printf("Socially ok (0/1): "); scanf("%d", &d.f.sa);
-    printf("Financially ok (0/1): "); scanf("%d", &d.f.fv);
-    printf("Got aptitude (0/1): "); scanf("%d", &d.f.apt);
-    printf("You like it (0/1): "); scanf("%d", &d.f.lk);
+
+    printf("Your choice (0/1): ");   scanf("%d", &t); d.f.yc  = t;
+    printf("Mom's choice (0/1): ");  scanf("%d", &t); d.f.mc  = t;
+    printf("Dad's choice (0/1): ");  scanf("%d", &t); d.f.fc  = t;
+    printf("Socially ok (0/1): ");   scanf("%d", &t); d.f.sa  = t;
+    printf("Financially ok (0/1): "); scanf("%d", &t); d.f.fv = t;
+    printf("Got aptitude (0/1): ");  scanf("%d", &t); d.f.apt = t;
+    printf("You like it (0/1): ");   scanf("%d", &t); d.f.lk  = t;
     return d;
 }
 
@@ -33,13 +35,13 @@ void make_decision(union decision *d) {
 
 void print_decsion(union decision d) {
     printf("\n--- Your Decision Report ---\n");
-    printf("You want it     : %s\n", d.f.yc ? "Yes" : "No");
-    printf("Mom approves    : %s\n", d.f.mc ? "Yes" : "No");
-    printf("Dad approves    : %s\n", d.f.fc ? "Yes" : "No");
-    printf("Society ok      : %s\n", d.f.sa ? "Yes" : "No");
-    printf("Money ok        : %s\n", d.f.fv ? "Yes" : "No");
+    printf("You want it     : %s\n", d.f.yc  ? "Yes" : "No");
+    printf("Mom approves    : %s\n", d.f.mc  ? "Yes" : "No");
+    printf("Dad approves    : %s\n", d.f.fc  ? "Yes" : "No");
+    printf("Society ok      : %s\n", d.f.sa  ? "Yes" : "No");
+    printf("Money ok        : %s\n", d.f.fv  ? "Yes" : "No");
     printf("Have aptitude   : %s\n", d.f.apt ? "Yes" : "No");
-    printf("You like it     : %s\n", d.f.lk ? "Yes" : "No");
+    printf("You like it     : %s\n", d.f.lk  ? "Yes" : "No");
     printf("Final decision  : %s\n", d.f.dec ? "GO FOR IT!" : "Maybe not.");
 }
 
