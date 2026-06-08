@@ -44,7 +44,7 @@ void print_decsion(union decision d) {
 }
 
 void print_conclusion_based_on_flags(union decision d) {
-    int n = decision.flags;
+    int n = d.flags;
     printf("\nFlags value: %d\n", n);
     if (n == 255)
         printf("Perfect score - everything lines up!\n");
