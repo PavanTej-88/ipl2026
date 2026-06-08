@@ -33,18 +33,18 @@ void make_decision(union decision *d) {
 
 void print_decsion(union decision d) {
     printf("\n--- Your Decision Report ---\n");
-    printf("You want it     : %s\n", &d.f.yc ? "Yes" : "No");
-    printf("Mom approves    : %s\n", &d.f.mc ? "Yes" : "No");
-    printf("Dad approves    : %s\n", &d.f.fc ? "Yes" : "No");
-    printf("Society ok      : %s\n", &d.f.sa ? "Yes" : "No");
-    printf("Money ok        : %s\n", &d.f.fv ? "Yes" : "No");
-    printf("Have aptitude   : %s\n", &d.f.apt ? "Yes" : "No");
-    printf("You like it     : %s\n", &d.f.lk ? "Yes" : "No");
-    printf("Final decision  : %s\n", &d.f.dec ? "GO FOR IT!" : "Maybe not.");
+    printf("You want it     : %s\n", d.f.yc ? "Yes" : "No");
+    printf("Mom approves    : %s\n", d.f.mc ? "Yes" : "No");
+    printf("Dad approves    : %s\n", d.f.fc ? "Yes" : "No");
+    printf("Society ok      : %s\n", d.f.sa ? "Yes" : "No");
+    printf("Money ok        : %s\n", d.f.fv ? "Yes" : "No");
+    printf("Have aptitude   : %s\n", d.f.apt ? "Yes" : "No");
+    printf("You like it     : %s\n", d.f.lk ? "Yes" : "No");
+    printf("Final decision  : %s\n", d.f.dec ? "GO FOR IT!" : "Maybe not.");
 }
 
 void print_conclusion_based_on_flags(union decision d) {
-    int n = d.flags;
+    int n = decision.flags;
     printf("\nFlags value: %d\n", n);
     if (n == 255)
         printf("Perfect score - everything lines up!\n");
